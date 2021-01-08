@@ -1,6 +1,6 @@
 import cv2
 import timeit
-#test
+
 # 모델 불러오기
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
