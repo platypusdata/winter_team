@@ -1,2 +1,2 @@
-str = '이유정'
+str = '이유정2'
 print(str)
