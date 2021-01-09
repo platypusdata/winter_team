@@ -37,23 +37,20 @@ while cap.isOpened():
 
 cap = cv.VideoCapture(0)
 # Define the codec and create VideoWriter object
-fourcc = cv.VideoWriter_fourcc(*'MJPG')
+fourcc = cv.VideoWriter_fourcc(*'XVID')
 out = cv.VideoWriter('output.avi', fourcc, 20.0, (640,  480))
 while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
         print("Can't receive frame (stream end?). Exiting ...")
         break
-    frame = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-    frame = cv.flip(frame, -1)
-    #0이 좌우(x축), 1은 상하(y축),-1은 대칭이동
-    #font = cv.FONT_HERSHEY_SIMPLEX
-    #cv.putText(frame, 'hello opencv', (100, 380), font, 2, (255, 255, 255), 2, cv.LINE_AA)
-    #text를 영상에 삽입
-    out.write(frame) #촬영되는 영상을 객체에 write
+    frame = cv.flip(frame, 0)
+    # write the flipped frame
+    out.write(frame)
     cv.imshow('frame', frame)
     if cv.waitKey(1) == ord('q'):
         break
 
 cap.release()
+out.release()
 cv.destroyAllWindows()
